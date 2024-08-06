@@ -63,7 +63,7 @@ from System.Collections.Generic import List #List<ElementType>() <- it's special
 doc = __revit__.ActiveUIDocument
 uidoc = __revit__.ActiveUIDocument
 app = __revit__.Application
-PATH SCRIPT = os.path.dirname(__file__)
+#PATH SCRIPT = os.path.dirname(__file__)
 
 
 #Symbols
