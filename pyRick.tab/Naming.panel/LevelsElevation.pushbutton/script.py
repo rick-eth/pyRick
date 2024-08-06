@@ -36,7 +36,7 @@ __max_revit_ver__ = "2022"
 # Regular + Autodesk
 import os, sys,math, datetime, time
 from Autodesk.Revit.DB import * # import everything from DB (very good for beginners and development)
-from Autodesk.Revit.DB import Transaction, Element, ElementId, FilteredElementCollector
+from Autodesk.Revit.DB import Transaction, Element, ElementId, FilteredElementCollector, BuiltInCategory
 
 #pyrevit
 
