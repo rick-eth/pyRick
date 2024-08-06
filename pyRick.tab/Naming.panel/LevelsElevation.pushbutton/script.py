@@ -67,8 +67,8 @@ app = __revit__.Application
 
 
 #Symbols
-symbol_start = "]"
-symbol_end = "["
+symbol_start = "z"
+symbol_end = "z"
 
 
 
@@ -105,7 +105,7 @@ all_levels = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Levels
 
 for lvl in all_levels:
     lvl_elevation = lvl.Elevation
-    lvl_elevation_m = round (convert_internal_to_m(lvl.Elevation))
+    lvl_elevation_m = round(convert_internal_to_m(lvl.Elevation))
     lvl_elevation_m_str = "+" + str(lvl_elevation_m) if lvl.Elevation > 0 else str(lvl_elevation_m)
 
     # Check if elevation already exists
