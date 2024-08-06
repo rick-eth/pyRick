@@ -106,14 +106,14 @@ all_levels = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Levels
 for lvl in all_levels:
     lvl_elevation = lvl.Elevation
     lvl_elevation_m = round (convert_internal_to_m(lvl.Elevation))
-    lvl_elevation_m_str = "+ {}".format(lvl_elevation_m) if lvl.Elevation > 0 else str(lvl_elevation_m)
+    lvl_elevation_m_str = "+" + str(lvl_elevation_m) if lvl.Elevation > 0 else str(lvl_elevation_m)
 
     # Check if elevation already exists
 
     # ELEVATION EXISTS
 
     # ELEVATION DOES NOT EXIST (new)
-    elevation_value = symbol_start + lvl_elevation_m - str + symbol_end
+    elevation_value = symbol_start + lvl_elevation_m_str + symbol_end
     new_name = lvl.Name + elevation_value
 
     t = Transaction(doc, __title__)
