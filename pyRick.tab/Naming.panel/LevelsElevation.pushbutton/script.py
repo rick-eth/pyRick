@@ -121,7 +121,7 @@ for lvl in all_levels:
     t.Start()
     try:
         lvl.Name = new_name
-        print(f"Renamed: {} -> {}".format(lvl.name, new_name))
+        print("Renamed: {} -> {}".format(lvl.name, new_name))
 
     except:
         print("Could not change Level's Name...")
