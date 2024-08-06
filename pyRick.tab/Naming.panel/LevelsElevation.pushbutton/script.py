@@ -120,8 +120,9 @@ for lvl in all_levels:
 
     t.Start()
     try:
+        curret_name = lvl.Name
         lvl.Name = new_name
-        print("Renamed: {} -> {}".format(lvl.name, new_name))
+        print("Renamed: {} -> {}".format(curret_name, new_name))
 
     except:
         print("Could not change Level's Name...")
