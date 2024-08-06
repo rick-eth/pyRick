@@ -2,7 +2,7 @@
 
 
 # IMPORTS
-from Autodesk.Revit.DB import * # import everything from DB (very good for beginners and development)
+from Autodesk.Revit.DB import *  # import everything from DB (very good for beginners and development)
 
 # VARIABLES
 app = __revit__.Application
@@ -19,7 +19,7 @@ def convert_internal_to_m(length):
     if rvt_year < 2022:
         return UnitUtils.Convert(length,
                                  DisplayUnitType.DUT_DECIMAL_FEET,
-                                 DisplayUnitType.DUT_METERS) # Change to any other unit here..
+                                 DisplayUnitType.DUT_METERS)  # Change to any other unit here..
 
     # RVT >= 2022
     else:

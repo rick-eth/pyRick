@@ -41,9 +41,8 @@ from Autodesk.Revit.DB import Transaction, Element, ElementId, FilteredElementCo
 #pyrevit
 
 #Custom Imports
-
 from Snippets._selection import get_selected_elements
-from Snippets._convert
+from S
 
 # .Net Imports
 
