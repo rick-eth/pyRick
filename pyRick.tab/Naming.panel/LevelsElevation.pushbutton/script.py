@@ -113,17 +113,19 @@ for lvl in all_levels:
     # ELEVATION EXISTS
 
     # ELEVATION DOES NOT EXIST (new)
-    elevatio_value = symbol_start + lvl_elevation_m - str + symbol_end
-    new_name = lvl.Name + elevatio_value
+    elevation_value = symbol_start + lvl_elevation_m - str + symbol_end
+    new_name = lvl.Name + elevation_value
 
-    t = Transaction(doc,__title__)
+    t = Transaction(doc, __title__)
 
     t.Start()
     try:
         lvl.Name = new_name
-        print(f"Renamed: {lvl.Name} -> {new_name}")
+        print(f"Renamed: {} -> {}".format(lvl.name, new_name))
+
     except:
         print("Could not change Level's Name...")
+
     t.Commit()
 
 
