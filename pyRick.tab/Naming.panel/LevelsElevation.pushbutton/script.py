@@ -126,7 +126,7 @@ for lvl in all_levels:
     except:
         print("Could not change Level's Name...")
 
-    t.Commit()
+t.Commit()
 
 
 # Add/Update Levels Elevations
