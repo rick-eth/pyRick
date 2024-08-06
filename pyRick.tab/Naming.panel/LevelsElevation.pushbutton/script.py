@@ -60,7 +60,7 @@ from System.Collections.Generic import List #List<ElementType>() <- it's special
 #==========================================
 # from pyrevit.revit import uidoc, doc, app # Alternative
 
-doc = __revit__.ActiveUIDocument
+doc = __revit__.ActiveUIDocument.Document
 uidoc = __revit__.ActiveUIDocument
 app = __revit__.Application
 #PATH SCRIPT = os.path.dirname(__file__)
