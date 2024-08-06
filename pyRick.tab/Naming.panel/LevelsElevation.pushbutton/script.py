@@ -42,7 +42,9 @@ from Autodesk.Revit.DB import Transaction, Element, ElementId, FilteredElementCo
 
 #Custom Imports
 from Snippets._selection import get_selected_elements
-from S
+from Snippets._convert import convert_internal_to_m
+
+
 
 # .Net Imports
 
@@ -66,7 +68,7 @@ PATH SCRIPT = os.path.dirname(__file__)
 
 #Symbols
 symbol_start = "]"
-symbold_end = "["
+symbol_end = "["
 
 
 
@@ -75,22 +77,7 @@ symbold_end = "["
 # ╚  ╚═╝╝╚╝╚═╝ ╩ ╩╚═╝╝╚╝╚═╝ FUNCTIONS
 #==========================================
 
-def convert_internal_to_m(length):
-    """Funtion to convert internal units to meters
-    :param length: Length in internal revit units
-    :return: Length in Meters, rounded to 2nd digit
-    """
-    rvt_year = int(app.VersionNumber)
 
-    #RVT < 2022
-    if rvt_year < 2022:
-        return UnitUtils.Convert(length,
-                                 DisplayUnitType.DUT_DECIMAL_FEET,
-                                 DisplayUnitType.DUT_METERS) # Change to any other unit here..
-
-    #RVT >= 2022
-    else:
-        return UnitUtils.ConvertFromInternalUnits(length, UnitTypeId.Meters)
 # ╔═╗╦  ╔═╗╔═╗╔═╗╔═╗╔═╗
 # ║  ║  ╠═╣╚═╗╚═╗║╣ ╚═╗
 # ╚═╝╩═╝╩ ╩╚═╝╚═╝╚═╝╚═╝ CLASSES
@@ -113,14 +100,32 @@ def convert_internal_to_m(length):
 all_levels = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Levels).WhereElementIsNotElementType().ToElements()
 
 
-#Get Levels Elevations
+#Get Levels Elevations + convert to meters + rounding
+
 
 for lvl in all_levels:
     lvl_elevation = lvl.Elevation
-    lvl_elevation_m = lvl_elevation /0.3048
-# convert to meters + rounding
+    lvl_elevation_m = round (convert_internal_to_m(lvl.Elevation))
+    lvl_elevation_m_str = "+" +  str(lvl_elevation_m) if lvl.Elevation > 0 else str(lvl_elevation_m)
 
-# check if elevation already exists
+    # Check if elevation already exists
+
+    # ELEVATION EXISTS
+
+    # ELEVATION DOES NOT EXIST (new)
+    elevatio_value = symbol_start + lvl_elevation_m - str + symbol_end
+    new_name = lvl.Name + elevatio_value
+
+    t = Transaction(doc,__title__)
+
+    t.Start()
+    try:
+        lvl.Name = new_name
+        print(f"Renamed: {lvl.Name} -> {new_name}")
+    except:
+        print("Could not change Level's Name...")
+    t.Commit()
+
 
 # Add/Update Levels Elevations
 
